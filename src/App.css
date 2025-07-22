@@ -1,0 +1,28 @@
+
+
+.image-in-bg-auth {
+    background: url(./assets/6848122.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.bg-glass {
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 100px;
+    background: #ffffff3a;
+    backdrop-filter: blur(10px);
+}
+
+.myinput::before { 
+    content: '';
+    position: absolute;
+    top: 2px; 
+    left: 10px;
+    width: 100% ;
+    background-image: url("./assets/Vector.png");
+    background-repeat: no-repeat;
+}
+
+@import "tailwindcss"
