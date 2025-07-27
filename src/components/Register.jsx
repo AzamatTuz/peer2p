@@ -1,22 +1,81 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useContext, useEffect, useState } from 'react'
+import AuthContext from './AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 function Register() {
-    const inputStyle = 'bg-[#A98467] border-none outline-none text-white pl-10 p-4 rounded-full placeholder:text-white'
-    const btnStyle = 'bg-white p-4 w-[47%] rounded-full font-semibold flex items-center gap-8'
+  
+  const[name, setName] = useState()
+  const[email, SetEmail] = useState()
+  const[password, setPassword] = useState()
+  const[secPassword, setSecPassword] = useState()
+  const[isClick, setIsClick] = useContext(AuthContext)
+  const[errorMessage, setErrorMesage] = useState()
+  const[token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '')
+  const navigate = useNavigate()
+
+async function handleSubmit(e) {
+    e.preventDefault();
+    
+    if (!name || !email || !password || !secPassword) {
+      return setErrorMesage('Барлық жолдар толтырылуы керек!!!');
+      
+    }
+
+    if (password !== secPassword) {
+      setErrorMesage('Құпия сөздер сәйкес келмиді!!!');
+      return
+    } else if(password.length < 8) {
+      return setErrorMesage('Құпия сөз 8 симолдан көп болуы керек!!!')
+    }
+
+    if (!email.includes('@')) {
+      setErrorMesage('@ символын ұмытып кеттіңіз!!!');
+      return
+    }
+
+    try {
+      const result = await axios.post('http://localhost:3000/register', {name, email, password})
+      console.log(result.data);
+      
+      if (result.data.message === 'User registred') {
+        setToken(result.data.token)
+        navigate('/')
+      } else {
+        setErrorMesage(result.data)
+      }
+      
+    } catch (error) {
+      console.error(error);
+      
+    }
+
+  }
+
+  useEffect(()=>{
+    localStorage.setItem('token', token)
+  },[token])
+
+   
+
+
+    const inputStyle = 'bg-[#ADC178] border-none outline-none text-white pl-8 p-3 rounded-full placeholder:text-white'
+    const btnStyle = 'bg-white p-4 w-[47%] rounded-full font-semibold flex items-center gap-8 shadow-2xl' 
   return (
-    <form className='flex flex-col w-[45%] gap-[35px] p-10 pl-20 pr-20 bg-glass'>
-        <h1 className='text-white text-5xl font-bold text-center'>Тіркелу</h1>
-        <p className='text-white text-4xl text-center'>Жалғастыру үшін тіркеліңіз</p>
-        <input type="text" className={inputStyle} placeholder='Есіміңіз . . .'/>
-        <input type="text" className={inputStyle} placeholder='Почтаңыз . . .'/>
-        <input type="password" className={inputStyle} placeholder='Құпия сөз . . .'/>
-        <input type="password" className={inputStyle} placeholder='Құпия сөзді тексеру . . .'/>
+    <form className='flex flex-col w-[25%] gap-[35px]  pl-20 pr-20' onSubmit={handleSubmit}>
+        <h1 className='text-[#534239] text-4xl font-bold text-center'>Тіркелу</h1>
+        <p className='text-[#534239] text-3xl text-center'>Жалғастыру үшін тіркеліңіз</p>
+        <input onChange={(e) => setName(e.target.value)} type="text" className={inputStyle} placeholder='Есіміңіз . . .'/>
+        <input onChange={(e) => SetEmail(e.target.value)} type="text" className={inputStyle} placeholder='Почтаңыз . . .'/>
+        <input onChange={(e) => setPassword(e.target.value)} type="password" className={inputStyle} placeholder='Құпия сөз . . .'/>
+        <input onChange={(e) => setSecPassword(e.target.value)} type="password" className={inputStyle} placeholder='Құпия сөзді тексеру . . .'/>
         <div className='flex justify-between '>
             <button className={btnStyle}><img className='w-8' src="src/assets/devicon_google.png" alt="" />Google арқылы</button>
             <button className={btnStyle}><img className='w-8' src="src/assets/Vectorв.png" alt="" />Vk арқылы</button>
         </div>
-        <button className={`${inputStyle} font-bold text-2xl text-center`}>Тіркелу</button>
-        <p className='text-white text-center'>Аккаунтыңыз барма ? <a className='decoration-solid' href="">Кіру</a></p>
+        {errorMessage && <p className='text-red-500 '>{errorMessage}</p>}
+        <button className={`${inputStyle} authBtn mt-[-10px] font-bold text-2xl text-center cursor-pointer`}><p className=' relative z-3'>Тіркелу</p></button>
+        <p className='text-[#534239] text-xl  text-center mt-[-20px]'>Аккаунтыңыз барма ? <span className='decoration-solid cursor-pointer' onClick={() => setIsClick(!isClick)}>Кіру</span></p>
     </form>
   )
 }
