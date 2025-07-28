@@ -68,7 +68,7 @@ function ProfileMain() {
     async function getProducts() {
         try {
 
-            const result = await axios.get(`http://localhost:3000/products`, {userId})
+            const result = await axios.get(`http://localhost:3000/products/user/${userId}`)
             console.log(result.data);
             
         } catch (error) {
