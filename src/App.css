@@ -4,6 +4,10 @@ html {
     scroll-behavior: smooth;
 }
 
+/* * {
+    outline: 1px solid red;
+} */
+
 .customFont {
     font-family: "Hammersmith One", sans-serif;
 }
