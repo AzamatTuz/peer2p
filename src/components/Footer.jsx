@@ -3,7 +3,7 @@ import FooterLink from './FooterLink'
 
 function Footer() {
   return (
-    <footer className='bg-[#534239] flex flex-col items-center pl-40 pr-20 p-7 gap-7 mt-30'>
+    <footer className='bg-[#534239] flex flex-col items-center pl-40 pr-20 p-7 gap-7'>
         <img src="src/assets/logo.png" alt="" />
         <section className='grid grid-cols-4 w-full '>
             <article className='flex flex-col gap-4'>

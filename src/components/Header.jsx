@@ -1,11 +1,12 @@
 import React from 'react'
 import HeaderNav from './HeaderNav'
+import { Link } from 'react-router-dom'
 
 function Header(props) {
     
   return (
     <header className={props.className}>
-        <img src="src/assets/logo.png" alt="" />
+        <Link to={'/'}><img src="src/assets/logo.png" alt="" /></Link>
         <HeaderNav/>
     </header>
   )

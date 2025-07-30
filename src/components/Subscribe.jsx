@@ -2,7 +2,7 @@ import React from 'react'
 
 function Subscribe() {
   return (
-    <section className='mt-20 flex gap-10 flex-col items-center'>
+    <section className='mt-20 flex gap-10 flex-col items-center mb-30'>
         <h1 className='text-5xl font-bold'>Соңғы жаңалықтарға тіркелу</h1>
         <p className='text-3xl'>Соңғы жаңалықтарды немесе жаңа тауарларды жіберіп алмаңыз</p>
         <article className='w-full relative'>

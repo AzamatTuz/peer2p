@@ -15,10 +15,11 @@ function Login() {
 async function handleSubmit(e) {
     e.preventDefault();
     
-    if (!login || !password) {
+    if (!login.trim() || !password.trim()) {
       return setErrorMeassage('Барлық жолдар толтырылуы керек!!!');
       
     }
+        
 
     try {
       const result =  await axios.post('http://localhost:3000/login', {login, password})
@@ -48,15 +49,15 @@ async function handleSubmit(e) {
     <form className='flex flex-col w-[25%] gap-[35px] p-10 pl-20 pr-20' onSubmit={handleSubmit}>
         <h1 className='text-[#534239] text-4xl font-bold text-center'>Кіру</h1>
         <p className='text-[#534239] text-3xl text-center'>Жалғастыру үшін аккунтқа кіріңіз</p>
-        <input onChange={(e) => setLogin(e.target.value)} type="text" className={inputStyle} placeholder='Есіміңіз немесе почтаңыз. . .'/>
-        <input onChange={(e) => setPassword(e.target.value)} type="password" className={inputStyle} placeholder='Құпия сөз . . .'/>
+        <input onChange={(e) => setLogin(e.target.value.trim())} type="text" className={inputStyle} placeholder='Есіміңіз немесе почтаңыз. . .'/>
+        <input onChange={(e) => setPassword(e.target.value.trim())} type="password" className={inputStyle} placeholder='Құпия сөз . . .'/>
         <div className='flex justify-between '>
             <button className={btnStyle}><img className='w-8' src="src/assets/devicon_google.png" alt="" />Google арқылы</button>
             <button className={btnStyle}><img className='w-8' src="src/assets/Vectorв.png" alt="" />Vk арқылы</button>
         </div>
         {errorMessage && <p className='text-red-500'>{errorMessage}</p>}
         <button className={`${inputStyle} font-bold text-2xl text-center authBtn`}><p className='z-3 relative'>Кіру</p></button>
-        <p className='text-[#534239] text-xl text-center'>Аккаунтыңыз жоқпа ? <span className='decoration cursor-pointer' onClick={() => setIsClick(!isClick)}>Тіркелу</span></p>
+        <p className='text-[#534239] text-xl text-center'>Аккаунтыңыз жоқпа ? <span className='decoration cursor-pointer auth-span' onClick={() => setIsClick(!isClick)}>Тіркелу</span></p>
     </form>
   )
 }

@@ -23,7 +23,7 @@ function About() {
             <img className='absolute z-0 top-[80%]' src="src/assets/linemin.png" alt="" />
             <img className='absolute rotate-[-15deg] origin-left z-0 top-[80%]' src="src/assets/linemin.png" alt="" />
             
-            <section className='relaitve z-2 bg-white w-full shadow-2xl p-8 rounded-3xl flex justify-around'>
+            <section className='relaitve z-2 bg-white w-full shadow-2xl p-8 rounded-3xl flex justify-around mb-30'>
 
                 <article className='w-90 text-center flex flex-col gap-5'>
                     <h1 className='text-3xl font-bold'>Неге бізді таңдайды?</h1>

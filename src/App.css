@@ -49,6 +49,14 @@ html {
     box-shadow: 0 -10px 40px rgb(185, 185, 185);
 }
 
+textarea {
+  resize: none;
+}
+
+.auth-span {
+    text-decoration: underline;
+}
+
 .form-file {
     display: none;
 }
@@ -171,12 +179,49 @@ html {
     height: 600px;
     background: #5c7e00;
     border-radius: 100%;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
     z-index: 1;
 }
 
 .authBtn:hover:after {
     top: -250px;
 }
+
+.message {
+    position: absolute;
+    background: #534239;
+    color: #ADC178;
+    width: 300px;
+    top: 100px;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.1s all linear;
+}
+
+.textDecoration:hover {
+    text-decoration: underline;
+}
+
+.textDecorationOn {
+    text-decoration: underline;
+}
+
+.lineAnimation {
+    width: 100%;
+    height: 5px;
+    background: #ADC178;
+    animation-duration: 3s;
+    animation-name: lineanimate;
+    animation-timing-function: linear;
+}
+
+@keyframes lineanimate {
+    0%{
+        width: 0;
+    } 100% {
+        width: 100%;
+    }
+}
+
 
 @import "tailwindcss"

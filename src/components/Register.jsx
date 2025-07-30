@@ -65,17 +65,17 @@ async function handleSubmit(e) {
     <form className='flex flex-col w-[25%] gap-[35px]  pl-20 pr-20' onSubmit={handleSubmit}>
         <h1 className='text-[#534239] text-4xl font-bold text-center'>Тіркелу</h1>
         <p className='text-[#534239] text-3xl text-center'>Жалғастыру үшін тіркеліңіз</p>
-        <input onChange={(e) => setName(e.target.value)} type="text" className={inputStyle} placeholder='Есіміңіз . . .'/>
-        <input onChange={(e) => SetEmail(e.target.value)} type="text" className={inputStyle} placeholder='Почтаңыз . . .'/>
-        <input onChange={(e) => setPassword(e.target.value)} type="password" className={inputStyle} placeholder='Құпия сөз . . .'/>
-        <input onChange={(e) => setSecPassword(e.target.value)} type="password" className={inputStyle} placeholder='Құпия сөзді тексеру . . .'/>
+        <input onChange={(e) => setName(e.target.value.trim())} type="text" className={inputStyle} placeholder='Есіміңіз . . .'/>
+        <input onChange={(e) => SetEmail(e.target.value.trim())} type="text" className={inputStyle} placeholder='Почтаңыз . . .'/>
+        <input onChange={(e) => setPassword(e.target.value.trim())} type="password" className={inputStyle} placeholder='Құпия сөз . . .'/>
+        <input onChange={(e) => setSecPassword(e.target.value.trim())} type="password" className={inputStyle} placeholder='Құпия сөзді тексеру . . .'/>
         <div className='flex justify-between '>
             <button className={btnStyle}><img className='w-8' src="src/assets/devicon_google.png" alt="" />Google арқылы</button>
             <button className={btnStyle}><img className='w-8' src="src/assets/Vectorв.png" alt="" />Vk арқылы</button>
         </div>
         {errorMessage && <p className='text-red-500 '>{errorMessage}</p>}
         <button className={`${inputStyle} authBtn mt-[-10px] font-bold text-2xl text-center cursor-pointer`}><p className=' relative z-3'>Тіркелу</p></button>
-        <p className='text-[#534239] text-xl  text-center mt-[-20px]'>Аккаунтыңыз барма ? <span className='decoration-solid cursor-pointer' onClick={() => setIsClick(!isClick)}>Кіру</span></p>
+        <p className='text-[#534239] text-xl  text-center mt-[-20px]'>Аккаунтыңыз барма ? <span className='decoration-solid cursor-pointer auth-span' onClick={() => setIsClick(!isClick)}>Кіру</span></p>
     </form>
   )
 }

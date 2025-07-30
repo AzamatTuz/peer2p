@@ -22,7 +22,7 @@ function Home() {
     <>
     
         <Header className={`flex bg-[#${color}] p-6 pl-20 pr-20 justify-between items-center fixed ttt w-full z-100 transition duration-700 ease-in-out`}/>
-    <div className='bg-image min-h-screen'>
+    <div className='bg-image min-h-screen relative overflow-hidden'>
         <Layout/>
         <img className='rotate-[180deg] absolute top-150 z-1' src="src/assets/Line.png" alt="" />
         
