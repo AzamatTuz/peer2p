@@ -41,7 +41,7 @@ function AddProductMain() {
 
         try {
             
-            const res = await axios.post("http://localhost:3000/addproduct", formData, {
+            const res = await axios.post("https://peer2p-back.onrender.com/addproduct", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     Authorization: "Bearer " + localStorage.getItem("token"),
@@ -63,7 +63,7 @@ function AddProductMain() {
 
     async function getCetgory() {
         try {
-            const result = await axios.get('http://localhost:3000/category')
+            const result = await axios.get('https://peer2p-back.onrender.com/category')
             setCategories(result.data)
             
         } catch (error) {

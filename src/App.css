@@ -215,6 +215,19 @@ textarea {
     animation-timing-function: linear;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(255, 255, 255, 0);
+    opacity: 1;
+    display: block;
+    cursor: pointer;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    color: rgba(255, 255, 255, 0);
+    opacity: 1;
+    display: block;
+    cursor: pointer;
+}
 @keyframes lineanimate {
     0%{
         width: 0;

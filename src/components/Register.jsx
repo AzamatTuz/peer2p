@@ -35,7 +35,7 @@ async function handleSubmit(e) {
     }
 
     try {
-      const result = await axios.post('http://localhost:3000/register', {name, email, password})
+      const result = await axios.post('https://peer2p-back.onrender.com/register', {name, email, password})
       console.log(result.data);
       
       if (result.data.message === 'User registred') {

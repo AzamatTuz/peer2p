@@ -11,7 +11,7 @@ function HeaderNav() {
   async function getUser() {
     try {
 
-      const result = await axios.get("http://localhost:3000/profile", {
+      const result = await axios.get("https://peer2p-back.onrender.com/profile", {
         headers: {
           "authorization": `Bearer ${token}`,
         },
@@ -20,7 +20,7 @@ function HeaderNav() {
       if (result.data.length > 0) {
         setIsLoged(true)
         setProfileImage(result.data[0].profile_image);
-        
+    
         
       }
     } catch (error) {
@@ -37,9 +37,9 @@ function HeaderNav() {
       <HeaderBtns to="/" text="Home" icon="src/assets/Home.png" />
       <HeaderBtns to="/about" text="About" icon="src/assets/About.png" />
       <HeaderBtns to="/catalog" text="Catalog" icon="src/assets/Catalog.png" />
-      <HeaderBtns to="/favourites" text="Favourites" icon="src/assets/Heart.png"/>
-      <HeaderBtns to="/chats" text="Chats" icon="src/assets/Chats.png" />
-      {isLoged ? <Link to={"/profile"}><img className="w-15 bg-white rounded-full border-2 border-[#ADC178]" src={`http://localhost:3000/uploads/${profileImage}`} alt=""/></Link> : <HeaderBtns to="/authorization" text="Login/Register" icon="src/assets/Login.png" />}
+      <HeaderBtns to="/favourites" text="Favourites" icon="src/assets/heart_head.png"/>
+      <HeaderBtns to="/notifications" text="Notification" icon="src/assets/Chats.png" />
+      {isLoged ? <Link to={"/profile"}><img className="w-15 bg-white rounded-full border-2 border-[#ADC178]" src={`https://peer2p-back.onrender.com/uploads/${profileImage}`} alt=""/></Link> : <HeaderBtns to="/authorization" text="Login/Register" icon="src/assets/Login.png" />}
     </nav>
 
   );

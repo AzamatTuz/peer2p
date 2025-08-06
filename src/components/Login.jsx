@@ -22,7 +22,7 @@ async function handleSubmit(e) {
         
 
     try {
-      const result =  await axios.post('http://localhost:3000/login', {login, password})
+      const result =  await axios.post('https://peer2p-back.onrender.com/login', {login, password})
       
       if (!result.data.token) {
         setErrorMeassage(result.data.message)

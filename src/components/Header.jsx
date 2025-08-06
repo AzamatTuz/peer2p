@@ -1,12 +1,14 @@
 import React from 'react'
 import HeaderNav from './HeaderNav'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Header(props) {
     
+  const navigate = useNavigate()
+
   return (
-    <header className={props.className}>
-        <Link to={'/'}><img src="src/assets/logo.png" alt="" /></Link>
+    <header id='header' className={props.className}>
+        <img className='' onClick={() => navigate('/')} src="src/assets/logo.png" alt="" />
         <HeaderNav/>
     </header>
   )

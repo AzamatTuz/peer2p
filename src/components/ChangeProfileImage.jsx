@@ -6,7 +6,7 @@ function ChangeProfileImage({profileImage, user, handleImageChange, preview, han
     <>
 
         <section className='relative'>
-            <ProfileImage image={`http://localhost:3000/uploads/${profileImage ? profileImage : user.profile_image}`}/>
+            <ProfileImage image={`https://peer2p-back.onrender.com/uploads/${profileImage ? profileImage : user.profile_image}`}/>
             <label className='label-image' htmlFor="image-upload"><img className='w-10 h-10 p-2' src="src/assets/pen.png" alt="" /></label>
             <input id="image-upload" type="file" accept="image/*" onChange={handleImageChange} className="form-file"/>
         </section>

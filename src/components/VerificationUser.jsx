@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import IMask from 'imask';
 
-function VerificationUser({ setIsClick, isClick, id}) {
+function VerificationUser({ setIsClick, isClick, id }) {
     const [phone, setPhone] = useState('')
     const [cities, setCities] = useState([])
     const [cityId, setCityId] = useState()
@@ -14,7 +14,7 @@ function VerificationUser({ setIsClick, isClick, id}) {
 
     async function getCities() {
         try {
-            const result = await axios.get('http://localhost:3000/city')
+            const result = await axios.get('https://peer2p-back.onrender.com/city')
             setCities(result.data)
             
         } catch (error) {
@@ -49,7 +49,7 @@ function VerificationUser({ setIsClick, isClick, id}) {
         }
 
         try {
-            const result = await axios.put('http://localhost:3000/verification', {id, phone, cityId, age, gender})
+            const result = await axios.put('https://peer2p-back.onrender.com/verification', {id, phone, cityId, age, gender})
             
             if (result.data == 'Great') {
                 setIsClick(!isClick)

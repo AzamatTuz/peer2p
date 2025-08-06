@@ -8,13 +8,13 @@ function Layout() {
   const navigate = useNavigate()
   async function IsJoined() {
     try {
-      const result = await axios.get('http://localhost:3000/profile', {
+      const result = await axios.get('https://peer2p-back.onrender.com/profile', {
                 headers: {
                     "authorization": `Bearer ${token}`,
                 },
             })
       console.log(result.data);
-      if (result.data[0].id > 0) {
+      if (result.data[0].id > 0 && result.data[0].is_verification) {
         navigate('/addproduct')
       } else {
         console.log(1212);
